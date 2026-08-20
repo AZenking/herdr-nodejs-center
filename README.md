@@ -1,10 +1,18 @@
 # Server Center
 
+[![Herdr Plugin](https://img.shields.io/badge/Herdr-Plugin-7c3aed)](https://herdr.dev/zh-cn/docs/plugins/)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![LINUX DO](https://img.shields.io/badge/LINUX-DO-FFB003)](https://linux.do/)
+
 > Herdr 插件 · 在弹窗面板中实时监控本地 Node.js / Bun / Deno 服务
 
-Server Center 是一个面向 macOS 的 Herdr 面板插件。它用一个 90% × 80% 的终端弹窗，实时展示本机正在运行的 Node.js、Bun、Deno 服务，包括监听地址与端口、运行时、PID、运行时长、项目目录，以及脱敏后的命令摘要。默认只显示处于 TCP LISTEN 状态的服务，按 `a` 可切换到显示全部运行时进程。
+Server Center 是一个面向 macOS 的第三方 [Herdr](https://herdr.dev/) 面板插件。它用一个 90% × 80% 的终端弹窗，实时展示本机正在运行的 Node.js、Bun、Deno 服务，包括监听地址与端口、运行时、PID、运行时长、项目目录，以及脱敏后的命令摘要。默认只显示处于 TCP LISTEN 状态的服务，按 `a` 可切换到显示全部运行时进程。
 
 Herdr Plugin v1 无法添加原生侧边栏，因此本插件使用最接近的承载面：会话级终端弹窗（popup）。它每 2 秒自动刷新一次，使用 macOS 自带的 `ps` 与 `lsof` 发现进程和监听端口，零 npm 依赖。
+
+## 关于 Herdr
+
+[Herdr](https://herdr.dev/) 是面向编码智能体的终端运行时与工作区管理工具。Herdr Plugin v1 不是受限 SDK：插件本质上是一个包含 `herdr-plugin.toml` 和可执行命令的目录，由 Herdr 负责安装、manifest 校验、按键绑定、终端窗格、调用上下文与 socket 访问。本插件使用官方声明式 action、popup pane 和本地 socket API 实现，不修改 Herdr 本体。
 
 ## 定位与限制
 
@@ -78,7 +86,7 @@ description = "open Server Center"
 herdr server reload-config
 ```
 
-本机 `prefix` 为 `ctrl+a`，因此打开方式是：按 `Ctrl+A`，随后按 `Shift+S`。如果终端无法区分 `s` 与 `Shift+S`，请把 `key` 改成未占用的组合键，避免与现有 `prefix+s` 绑定冲突。
+如果你的 `prefix` 为 `ctrl+a`，打开方式就是：按 `Ctrl+A`，随后按 `Shift+S`。如果终端无法区分 `s` 与 `Shift+S`，请把 `key` 改成未占用的组合键，避免与现有 `prefix+s` 绑定冲突。
 
 ## 快捷键
 
@@ -106,9 +114,13 @@ herdr server reload-config
 
 窄窗口会自动裁剪列以适配宽度；底部状态栏会显示当前选中进程的完整 `cwd`。
 
-## 文档
+## 文档与分发
 
 - [使用教程](docs/USAGE.md) — 详细的安装、配置、操作与排错指南
+- [Herdr 插件文档](https://herdr.dev/zh-cn/docs/plugins/) — 官方 manifest、安装、运行时与安全说明
+- [Herdr 插件市场](https://herdr.dev/plugins/) — 社区插件自动索引
+
+本仓库是公开仓库，根目录包含 `herdr-plugin.toml`，并已添加 GitHub topic `herdr-plugin`，现已被 [Herdr 插件市场](https://herdr.dev/plugins/) 自动索引。被收录仅表示可发现，不代表 Herdr 官方审核或背书。安装第三方插件前，请先检查 manifest 和源码。
 
 ## 开发与验证
 
@@ -137,6 +149,10 @@ herdr plugin unlink server-center     # 本地 link
 - 只读：不会向服务进程写入、发信号或执行任何管理操作。
 - 数据仅在本机通过 `ps` / `lsof` 收集，不对外发送。
 
+## 社区
+
+本项目认可并感谢 [LINUX DO](https://linux.do/) 社区。项目与 LINUX DO、Herdr 官方均无隶属或背书关系。
+
 ## 许可证
 
-MIT
+[MIT](LICENSE)

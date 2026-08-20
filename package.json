@@ -7,6 +7,14 @@
     "type": "git",
     "url": "https://github.com/AZenking/herdr-nodejs-center.git"
   },
+  "homepage": "https://github.com/AZenking/herdr-nodejs-center#readme",
+  "keywords": [
+    "herdr",
+    "herdr-plugin",
+    "nodejs",
+    "bun",
+    "deno"
+  ],
   "scripts": {
     "check": "node --check src/open.js && node --check src/server-center.js && node --test",
     "snapshot": "node src/server-center.js --once"

@@ -109,7 +109,7 @@ description = "open Server Center"
 
 ### 3.3 快捷键的实际按键
 
-`key = "prefix+shift+s"` 中的 `prefix` 是你在 `[keys]` 中配置的 `prefix`。本机配置为：
+`key = "prefix+shift+s"` 中的 `prefix` 是你在 `[keys]` 中配置的 `prefix`。例如：
 
 ```toml
 [keys]
